@@ -1,0 +1,39 @@
+# Config file dedicated to the user's personal zshrc profile shared between all exegol containers.
+# This file is sourced in /root/.zshrc file.
+# Alternatively, the /opt/my-resources/setup/load_user_setup.sh file can be used to operate the change once (instead of sourcing a file for each zsh instance)
+
+# commands to always run
+neo4j start >/dev/null 2>&1
+
+# shell
+precmd() { print "" }
+NEWLINE=$'\n'
+PROMPT='%{$fg[white]%}%{%G┌%}%{%G─%}%{%G─%}[%{$fg[red]%}%~%{$fg[white]%}]${NEWLINE}%{%G└%}%{%G─%}%{%G╼%}%{$fg[reset_color]%} '
+
+# zstyle ':completion:*' file-list all
+# ZSH_DISABLE_COMPFIX=true
+
+# color correction for zsh-syntax-highlighting
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#626262'
+
+source /workspace/.env
+WORKDIR=/workspace
+DIR_TARGETS=/workdir/targets
+DIR_LOOT=/workdir/loot
+DC_HOST=$DC
+
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+# fix alias not working
+alias l='ll'
