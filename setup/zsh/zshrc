@@ -18,10 +18,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#626262'
 
 source /workspace/.env
 WORKDIR=/workspace
-TARGETS=/workdir/targets
-LOOT=/workdir/loot
-DIR_TARGETS=/workdir/targets
-DIR_LOOT=/workdir/loot
+TARGETS=/workspace/targets
+LOOT=/workspace/loot
+DIR_TARGETS=/workspace/targets
+DIR_LOOT=/workspace/loot
 DC_HOST=$DC
 
 # This speeds up pasting w/ autosuggest
