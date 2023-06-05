@@ -2,8 +2,8 @@
 
 # better system utilities
 alias ls="exa"
-alias ll='exa -l --group-directories-first --no-user --no-filesize --no-time --no-permissions'
-alias la='exa -la --group-directories-first --no-filesize --no-time'
+alias ll='exa -la --group-directories-first --no-user --no-filesize --no-time --no-permissions'
+alias la='exa -la --group-directories-first'
 
 # network
 alias ipa='ip --brief a'

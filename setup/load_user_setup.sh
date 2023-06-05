@@ -14,17 +14,20 @@ echo -n > ~/.zsh_history
 
 # pentest environment variables source
 FILE=/workspace/.env
-touch $FILE
-echo "CLIENT=''" >> $FILE
-echo "DOMAIN=''" >> $FILE
-echo "FQDN=''" >> $FILE
-echo "DC=''" >> $FILE
-echo "DC2=''" >> $FILE
-echo "DC3=''" >> $FILE
-echo "USER=''" >> $FILE
-echo "PASSWORD=''" >> $FILE
-echo "USER_ADM=''" >> $FILE
-echo "PASSWORD_ADM=''" >> $FILE
+if [ ! -f $FILE ]
+then
+    touch $FILE
+    echo "CLIENT=''" >> $FILE
+    echo "DOMAIN=''" >> $FILE
+    echo "FQDN=''" >> $FILE
+    echo "DC=''" >> $FILE
+    echo "DC2=''" >> $FILE
+    echo "DC3=''" >> $FILE
+    echo "USER=''" >> $FILE
+    echo "PASSWORD=''" >> $FILE
+    echo "USER_ADM=''" >> $FILE
+    echo "PASSWORD_ADM=''" >> $FILE
+fi
 
 # custom arsenal
 python3 -m pipx uninstall arsenal
@@ -75,6 +78,9 @@ touch /workspace/notes/comptes.md
 touch /workspace/notes/partages.md
 touch /workspace/notes/questions.md
 touch /workspace/notes/postex.md
-mkdir /workspace/screenshot
+mkdir /workspace/screenshots
 mkdir /workspace/targets
+
+find /workspace/ -type d -exec chmod 770 {} \; -exec chmod g+s {} \;
+find /workspace/ -type f -exec chmod 660 {} \;
 

@@ -19,9 +19,11 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#626262'
 source /workspace/.env
 WORKDIR=/workspace
 TARGETS=/workspace/targets
+ATTACKS=/workspace/attacks
 LOOT=/workspace/loot
 DIR_TARGETS=/workspace/targets
 DIR_LOOT=/workspace/loot
+DIR_ATTACKS=/workspace/attacks
 DC_HOST=$DC
 
 # This speeds up pasting w/ autosuggest
@@ -39,3 +41,4 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # fix alias not working
 alias l='ll'
+
