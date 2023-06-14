@@ -30,4 +30,5 @@ alias grep-ip='grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"'
 alias ips2ranges='cut -d "." -f 1,2,3 | sort | uniq -c | sort -nr'
 alias computers2ips='while read in; do host "$in"; done'
 alias ips2computers='while read in; do host "$in"; done'
-
+alias cme_get_hosts="cut -d ' ' -f 10"
+alias cme_parse_lsa="grep --text -v 'plain\|aes128\|aes256\|des-cbc\|dpapi\|NL\$KM\|L\$ASP\|L\$AA1\|L\$8BF\|L\$011\|\+]\|\*]\|aad3b435b\|Questions\|DCC2'"
