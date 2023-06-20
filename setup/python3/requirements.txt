@@ -2,4 +2,4 @@
 # To simplify this process, the name of the pip packages to be installed can be listed in this file like a regular requirements.txt.
 # All packages listed below will be installed automatically with pip3 when creating a new Exegol container.
 bloodyAD
-
+apachetomcatscanner
