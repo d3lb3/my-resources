@@ -48,6 +48,16 @@ git -C /opt/tools clone https://github.com/cube0x0/CVE-2021-1675
 # noPac scan and exploit
 git -C /opt/tools clone https://github.com/Ridter/noPac
 
+# update to latest cme version
+
+git clone https://github.com/mpgn/CrackMapExec
+cd CrackMapExec
+pipx install .
+cd ..
+rm -rf ./CrackMapExec
+rm -rf /root/.cme
+cp /opt/my-resources/setup/cme/cme.conf /root/.cme/cme.conf
+
 # switch to crackmapexec audit mode
 sed -i 's/audit_mode =/audit_mode = */g' ~/.cme/cme.conf
 
