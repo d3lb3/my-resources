@@ -49,19 +49,13 @@ git -C /opt/tools clone https://github.com/cube0x0/CVE-2021-1675
 git -C /opt/tools clone https://github.com/Ridter/noPac
 
 # update to latest cme version
-
 git clone https://github.com/Pennyw0rth/NetExec
 cd NetExec
 pipx install .
 cd ..
 rm -rf ./NetExec
-rm -rf /root/.nxc
-cp /opt/my-resources/setup/cme/cme.conf /root/.nxc/nxc.conf
-
-# switch to crackmapexec audit mode
-sed -i 's/audit_mode =/audit_mode = */g' ~/.nxc/nxc.conf
-# edit pwn label
-sed -i 's/Pwn3d!/admin/g' ~/.nxc/nxc.conf
+mkdir /root/.nxc
+cp -r /opt/my-resources/setup/nxc/nxc.conf /root/.nxc/nxc.conf
 
 # build internal pentest tree
 mkdir /workspace/attacks
