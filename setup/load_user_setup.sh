@@ -17,17 +17,17 @@ FILE=/workspace/.env
 if [ ! -f $FILE ]
 then
     touch $FILE
-    echo "CLIENT=''" >> $FILE
-    echo "DOMAIN=''" >> $FILE
-    echo "FQDN=''" >> $FILE
-    echo "DC=''" >> $FILE
-    echo "DC2=''" >> $FILE
-    echo "DC3=''" >> $FILE
-    echo "USER=''" >> $FILE
-    echo "PASSWORD=''" >> $FILE
-    echo "USER_ADM=''" >> $FILE
-    echo "PASSWORD_ADM=''" >> $FILE
 fi
+echo "CLIENT=''" >> $FILE
+echo "DOMAIN=''" >> $FILE
+echo "FQDN=''" >> $FILE
+echo "DC=''" >> $FILE
+echo "DC2=''" >> $FILE
+echo "DC3=''" >> $FILE
+echo "USER=''" >> $FILE
+echo "PASSWORD=''" >> $FILE
+echo "USER_ADM=''" >> $FILE
+echo "PASSWORD_ADM=''" >> $FILE
 
 # custom arsenal
 python3 -m pipx uninstall arsenal
@@ -48,13 +48,7 @@ git -C /opt/tools clone https://github.com/cube0x0/CVE-2021-1675
 # noPac scan and exploit
 git -C /opt/tools clone https://github.com/Ridter/noPac
 
-# update to latest cme version
-git clone https://github.com/Pennyw0rth/NetExec
-cd NetExec
-pipx install .
-cd ..
-rm -rf ./NetExec
-mkdir /root/.nxc
+# cme configuration
 cp -r /opt/my-resources/setup/nxc/nxc.conf /root/.nxc/nxc.conf
 
 # build internal pentest tree
