@@ -21,8 +21,9 @@ alias noPac="python3 /opt/tools/noPac/noPac.py"
 alias exploit_nopac="python3 /opt/tools/noPac/noPac.py"
 alias DumpHash="python3 /opt/tools/Responder/DumpHash.py"
 alias responder_dump_hash="python3 /opt/tools/Responder/DumpHash.py"
-alias cme-bh-on="sed -i 's/bh_enabled = False/bh_enabled = True/g' ~/.cme/cme.conf && cat ~/.cme/cme.conf | grep -A 5 --color=never 'BloodHound'"
-alias cme-bh-off="sed -i 's/bh_enabled = True/bh_enabled = False/g' ~/.cme/cme.conf && cat ~/.cme/cme.conf | grep -A 5 --color=never 'BloodHound'"
+alias nxc-bh-on="sed -i 's/bh_enabled = False/bh_enabled = True/g' ~/.nxc/nxc.conf && cat ~/.nxc/nxc.conf | grep -A 5 --color=never 'BloodHound'"
+alias nxc-bh-off="sed -i 's/bh_enabled = True/bh_enabled = False/g' ~/.nxc/nxc.conf && cat ~/.nxc/nxc.conf | grep -A 5 --color=never 'BloodHound'"
+alias arsenal="/tools/arsenal/run"
 
 # handy wrappers
 alias http-server='python3 -m http.server'
@@ -30,6 +31,6 @@ alias grep-ip='grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"'
 alias ips2ranges='cut -d "." -f 1,2,3 | sort | uniq -c | sort -nr'
 alias computers2ips='while read in; do host "$in"; done'
 alias ips2computers='while read in; do host "$in"; done'
-alias cme_get_hosts="cut -d ' ' -f 10"
-alias cme_parse_lsa="grep --text -v 'plain\|aes128\|aes256\|des-cbc\|dpapi\|NL\$KM\|L\$ASP\|L\$AA1\|L\$8BF\|L\$011\|\+]\|\*]\|aad3b435b\|Questions\|DCC2'"
-alias cme_parse_ntds="grep -i $DOMAIN'\\' | cut -d ' ' -f 25
+alias nxc_get_hosts="cut -d ' ' -f 10"
+alias nxc_parse_lsa="grep --text -v 'plain\|aes128\|aes256\|des-cbc\|dpapi\|NL\$KM\|L\$ASP\|L\$AA1\|L\$8BF\|L\$011\|\+]\|\*]\|aad3b435b\|Questions\|DCC2'"
+alias nxc_parse_ntds="grep -i $DOMAIN'\\' | cut -d ' ' -f 25
