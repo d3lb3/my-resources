@@ -34,7 +34,6 @@ python3 -m pipx uninstall arsenal
 rm /root/.local/bin/arsenal
 git clone --depth 1 https://github.com/JulienBedel/arsenal /tools/arsenal && cd /tools/arsenal
 python3 -m pip install -r requirements.txt
-python3 setup.py install
 cd $LAUNCH_DIRECTORY
 
 # PrintNightmare scan and exploit
