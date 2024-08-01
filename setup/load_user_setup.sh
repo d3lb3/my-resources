@@ -7,6 +7,8 @@
 
 # Exegol also features a set of supported customization a user can make.
 # The /opt/supported_setups.md file lists the supported configurations that can be made easily.
+
+# keep track of the current directory as we will cd to install some tools
 LAUNCH_DIRECTORY="$PWD"
 
 # remove history
@@ -18,37 +20,18 @@ if [ ! -f $FILE ]
 then
     touch $FILE
 fi
-echo "CLIENT=''" >> $FILE
 echo "DOMAIN=''" >> $FILE
 echo "FQDN=''" >> $FILE
 echo "DC=''" >> $FILE
 echo "DC2=''" >> $FILE
-echo "DC3=''" >> $FILE
 echo "USER=''" >> $FILE
 echo "PASSWORD=''" >> $FILE
 echo "USER_ADM=''" >> $FILE
 echo "PASSWORD_ADM=''" >> $FILE
 
-# custom arsenal
-python3 -m pipx uninstall arsenal
-rm /root/.local/bin/arsenal
-git clone --depth 1 https://github.com/JulienBedel/arsenal /tools/arsenal && cd /tools/arsenal
-python3 -m pip install -r requirements.txt
-cd $LAUNCH_DIRECTORY
-
-# PrintNightmare scan and exploit
-python3 -m pipx install poetry
-git -C /opt/tools clone https://github.com/eversinc33/ItWasAllADream
-cd /opt/tools/ItWasAllADream
-/root/.local/bin/poetry install
-cd $LAUNCH_DIRECTORY
-git -C /opt/tools clone https://github.com/cube0x0/CVE-2021-1675
-
-# noPac scan and exploit
-git -C /opt/tools clone https://github.com/Ridter/noPac
-
-# cme configuration
-cp -r /opt/my-resources/setup/nxc/nxc.conf /root/.nxc/nxc.conf
+# nxc configuration
+sed -i 's/^pwn3d_label = .*/pwn3d_label = admin/' /root/.nxc/nxc.conf
+sed -i 's/^audit_mode = .*/audit_mode = \*/' /root/.nxc/nxc.conf
 
 # build internal pentest tree
 mkdir /workspace/attacks
@@ -82,4 +65,17 @@ mkdir /workspace/targets
 
 find /workspace/ -type d -exec chmod 770 {} \; -exec chmod g+s {} \;
 find /workspace/ -type f -exec chmod 660 {} \;
+
+# custom arsenal
+python3 -m pipx uninstall arsenal
+rm /root/.local/bin/arsenal
+git clone --depth 1 https://github.com/JulienBedel/arsenal /tools/arsenal && cd /tools/arsenal
+python3 -m pip install -r requirements.txt
+cd $LAUNCH_DIRECTORY
+
+# PrintNightmare exploit
+git -C /opt/tools clone https://github.com/cube0x0/CVE-2021-1675
+
+# noPac scan and exploit
+git -C /opt/tools clone https://github.com/Ridter/noPac
 
