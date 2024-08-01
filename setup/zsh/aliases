@@ -33,4 +33,5 @@ alias computers2ips='while read in; do host "$in"; done'
 alias ips2computers='while read in; do host "$in"; done'
 alias nxc_get_hosts="cut -d ' ' -f 10"
 alias nxc_parse_lsa="grep --text -v 'plain\|aes128\|aes256\|des-cbc\|dpapi\|NL\$KM\|L\$ASP\|L\$AA1\|L\$8BF\|L\$011\|\+]\|\*]\|aad3b435b\|Questions\|DCC2'"
-alias nxc_parse_ntds="grep -i $DOMAIN'\\' | cut -d ' ' -f 25
+alias nxc_parse_ntds="grep -i $DOMAIN'\\' | cut -d ' ' -f 25"
+alias nxc_get_computers="grep 'SMB' | tr -s ' ' | cut -d ' ' -f 2"
