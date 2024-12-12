@@ -69,6 +69,7 @@ find /workspace/ -type f -exec chmod 660 {} \;
 # add kali repository
 echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" | sudo tee /etc/apt/sources.list.d/kali.list
 wget -q -O - https://archive.kali.org/archive-key.asc | sudo apt-key add -
+sudo apt update
 
 # custom arsenal
 python3 -m pipx uninstall arsenal
