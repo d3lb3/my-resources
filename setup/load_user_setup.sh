@@ -66,11 +66,15 @@ mkdir /workspace/targets
 find /workspace/ -type d -exec chmod 770 {} \; -exec chmod g+s {} \;
 find /workspace/ -type f -exec chmod 660 {} \;
 
+# add kali repository
+echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" | sudo tee /etc/apt/sources.list.d/kali.list
+wget -q -O - https://archive.kali.org/archive-key.asc | sudo apt-key add -
+
 # custom arsenal
 python3 -m pipx uninstall arsenal
 rm /root/.local/bin/arsenal
 git clone --depth 1 https://github.com/JulienBedel/arsenal /tools/arsenal && cd /tools/arsenal
-python3 -m pip install -r requirements.txt
+pipx install . --force
 cd $LAUNCH_DIRECTORY
 
 # PrintNightmare exploit
