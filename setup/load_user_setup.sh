@@ -79,3 +79,5 @@ cp -r arsenal-cheats/cheats ./arsenal/arsenal/data/cheats
 rm -rf arsenal-cheats
 cd arsenal
 pipx install .
+cd $LAUNCH_DIRECTORY
+rm -rf arsenal
