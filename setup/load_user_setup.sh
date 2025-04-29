@@ -67,20 +67,15 @@ find /workspace/ -type d -exec chmod 770 {} \; -exec chmod g+s {} \;
 find /workspace/ -type f -exec chmod 660 {} \;
 
 # add kali repository
-echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" | sudo tee /etc/apt/sources.list.d/kali.list
-wget -q -O - https://archive.kali.org/archive-key.asc | sudo apt-key add -
+wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/kali-archive-keyring.gpg] http://http.kali.org/kali kali-rolling main contrib non-free" | sudo tee /etc/apt/sources.list.d/kali.list
 sudo apt update
 
 # custom arsenal
-python3 -m pipx uninstall arsenal
-rm /root/.local/bin/arsenal
-git clone --depth 1 https://github.com/JulienBedel/arsenal /tools/arsenal && cd /tools/arsenal
-pipx install . --force
-cd $LAUNCH_DIRECTORY
-
-# PrintNightmare exploit
-git -C /opt/tools clone https://github.com/cube0x0/CVE-2021-1675
-
-# noPac scan and exploit
-git -C /opt/tools clone https://github.com/Ridter/noPac
-
+git clone https://github.com/Orange-Cyberdefense/arsenal
+rm -rf ./arsenal/arsenal/data/cheats
+git clone https://github.com/d3lb3/arsenal-cheats
+cp -r arsenal-cheats/cheats ./arsenal/arsenal/data/cheats
+rm -rf arsenal-cheats
+cd arsenal
+pipx install .

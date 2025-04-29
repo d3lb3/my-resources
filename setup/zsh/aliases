@@ -1,15 +1,8 @@
 # Config file dedicated to the user's personal aliases shared between all exegol containers
 
-# better system utilities
-alias ls="exa"
-alias ll='exa -la --group-directories-first --no-user --no-filesize --no-time --no-permissions'
-alias la='exa -la --group-directories-first'
-
 # network
 alias ipa='ip --brief a'
-alias my-ip="ip addr list `ip a | grep 'state UP' | cut -d ' ' -f 2` | awk '/inet.*brd/ {print $2}'"
-alias external-ip='curl https://ipecho.net/plain ; echo'
-alias vpn-ip="ip addr list tun0: | awk '/inet.*brd/ {print $2}'"
+alias ipup='ip -o -4 addr show up | awk '\''{print $2 ": " $4}'\'''
 
 # tools
 alias nse='ls /usr/share/nmap/scripts | grep '
